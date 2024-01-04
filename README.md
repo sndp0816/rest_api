@@ -128,5 +128,28 @@ Check whether data added or not
 
 ![plot](./src/img/mongo1.png)
 
+Deleting from database
+
+```bash
+//delete the students form data
+
+app.delete("/student/:id",async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const deleteStudent = await student.findByIdAndDelete(id); 
+
+        if(!req.params.id){
+            return res.statusCode(400).send;
+        }else{
+            res.send(deleteStudent);
+        }
+
+    }catch(e){
+        res.status(500).send(e);
+    }
+});
+
+```
+
 
 

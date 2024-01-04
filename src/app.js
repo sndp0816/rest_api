@@ -12,17 +12,79 @@ app.get("/",(req,res)=>{
     res.send("hello form backend1");
 });
 
-app.post("/student",(req,res)=>{
-    console.log(req.body);
+// app.post("/student",(req,res)=>{
+//     console.log(req.body);
+//     const user = new student(req.body);
+//     user.save().then(()=>
+//     {
+//         res.status(201);
+//         res.send(user);
+//     }).catch((e)=>{
+//         res.status(400).send(e);
+//     })
+//     //res.send("hello form backend");
+// });
+
+
+//Create using Async & await
+
+app.post("/student",async(req,res)=>{
+    try{
     const user = new student(req.body);
-    user.save().then(()=>
-    {
-        res.status(201);
-        res.send(user);
-    }).catch((e)=>{
+    const Createuser = await user.save();
+    res.status(201).send(Createuser);
+    }catch(e){
         res.status(400).send(e);
-    })
-    //res.send("hello form backend");
+    }
+});
+
+//find the in data collection 
+app.get("/student",async(req,res)=>{
+    try{
+
+        const studentData = await student.find();
+        res.send(studentData);
+
+    }catch(e){
+        res.status(400).send(e);
+    }
+});
+
+// find in individual student data
+app.get("/student/:id",async(req,res)=>{
+    try{
+
+        const _id = req.params.id;
+        const idData = await student.findById(_id);
+        console.log(idData);
+
+        if(!idData){
+            return res.status(404).send();
+        }else{
+            res.send(idData)
+        }
+
+    }catch(e){
+        res.status(500).send(e);
+    }
+});
+
+
+//delete the students form data
+app.delete("/student/:id",async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const deleteStudent = await student.findByIdAndDelete(id); 
+
+        if(!req.params.id){
+            return res.statusCode(400).send;
+        }else{
+            res.send(deleteStudent);
+        }
+
+    }catch(e){
+        res.status(500).send(e);
+    }
 });
 
 app.listen(port,()=>{

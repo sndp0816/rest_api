@@ -9,13 +9,13 @@ const connectionParams={
      useUnifiedTopology: true 
 
 
-}
+};
 mongoose.connect(URL)
     .then( () => {
         console.log('Connected to database ')
     })
     .catch( (err) => {
         console.error(`Error connecting to the database. \n${err}`);
-    })
+    });
 
     
