@@ -87,6 +87,27 @@ app.delete("/student/:id",async(req,res)=>{
     }
 });
 
+//Update the data
+app.patch("/student/:id",async(req,res)=>{
+
+    try{
+    const _id = req.params.id;
+    const updateStudent = await student.findByIdAndUpdate(_id,req.body,{
+        new:true
+    });
+
+    if(!req.params.id){
+        return res.statusCode(400).send;
+    }else{
+        res.send(updateStudent);
+    }}
+    catch(e){
+        res.status(500).send(e);
+    }
+
+
+});
+
 app.listen(port,()=>{
     console.log(`connection is set on ${port}`);
 });

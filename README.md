@@ -1,10 +1,11 @@
 
 ## Installation
 
-Initialize the node package manager in folder
+#### Initialize the node package manager in folder using Terminal
 
 ```bash
   mkdir rest_api
+  cd rest_api
   npm init or npm init -y
 ```
 #### Now install express, mongoose, validator  using npm
@@ -15,7 +16,7 @@ Initialize the node package manager in folder
   npm i validator
 
 ```
-connection to Database
+##### connection to Database
 
 ```bash
 const mongoose = require("mongoose");
@@ -43,7 +44,7 @@ mongoose.connect(URL)
 
 ```
 
-Data Schema for database
+##### Data Schema for database
 ```bash
 const mongoose = require("mongoose");
 const validator = require("validator");
@@ -85,7 +86,7 @@ module.exports = student;
 
 ```
 
-inserting the data in Database
+##### Inserting the data in Database
 
 ```bash
 const express = require("express");
@@ -120,15 +121,15 @@ app.listen(port,()=>{
 });
 
 ```
-Verify the api using Postman
+##### Verify the api using Postman
 
 ![plot](./src/img/postman1.png)
 
-Check whether data added or not
+##### Check whether data added or not
 
 ![plot](./src/img/mongo1.png)
 
-Deleting from database
+##### Deleting from database
 
 ```bash
 //delete the students form data
