@@ -16,7 +16,26 @@
   npm i validator
 
 ```
-##### connection to Database
+
+##### What is express
+
+Express Fast, unopinionated, minimalist web framework for Node.js.
+
+[Click here to get express documentaion](https://expressjs.com/en/5x/api.html)
+
+##### What is mongoose
+
+Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
+
+[Click here to get mongoose documentaion](https://mongoosejs.com/docs/guide.html)
+
+##### What is validator
+
+A library of string validators and sanitizers.
+
+[Click here to get validator documentaion](https://www.npmjs.com/package/validator)
+
+##### Connection to Database
 
 ```bash
 const mongoose = require("mongoose");
@@ -153,9 +172,13 @@ app.delete("/student/:id",async(req,res)=>{
 ```
 
 
-//Update the data
+##### Updating the data
 
 ```bash 
+
+//Update the data
+
+
 app.patch("/student/:id",async(req,res)=>{
 
     try{
